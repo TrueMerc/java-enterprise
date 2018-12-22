@@ -8,6 +8,7 @@ target
 *.pom
 *.sha1
 *.jar
+*.war
 _remote.repositories
 *.zip
 *.lastUpdated
