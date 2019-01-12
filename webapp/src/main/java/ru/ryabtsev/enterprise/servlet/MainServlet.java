@@ -9,27 +9,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Main page servlet class.
+ * Main page servlet.
  */
 @WebServlet(urlPatterns = "/main")
 public class MainServlet extends HttpServlet {
-
-    private static final String PAGE_HEADER = "Main page";
-
-//    @Override
-//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        PrintWriter out = resp.getWriter();
-//        out.println("<!DOCTYPE html>");
-//        out.println("<html>");
-//        out.println("<head>");
-//        out.println("<title>" + PAGE_HEADER + "</title>");
-//        out.println("</head>");
-//        out.println("<body>");
-//        out.println("<h1>" + PAGE_HEADER + "</h1>");
-//        out.println("</body>");
-//        out.println("</html>");
-//    }
-
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,17 +25,6 @@ public class MainServlet extends HttpServlet {
     }
 
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Servlet response encoding: " + resp.getCharacterEncoding());
-        final PrintWriter out = resp.getWriter();
-        out.println("<!DOCTYPE html>");
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>" + PAGE_HEADER + "</title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>" + PAGE_HEADER + "</h1>");
-        out.println("</body>");
-        out.println("</html>");
-        System.out.println("Servlet response encoding: " + resp.getCharacterEncoding());
+        req.getRequestDispatcher("main.html").forward(req,resp);
     }
 }

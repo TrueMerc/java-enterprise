@@ -19,9 +19,7 @@ public class EncodingFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("Servlet response encoding: " + servletResponse.getCharacterEncoding());
         servletResponse.setCharacterEncoding(RESPONSE_CONTENT_ENCODING);
-        System.out.println("CONTENT ENCODING INFO WAS ADDED.");
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

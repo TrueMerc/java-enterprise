@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Cart page servlet class.
+ * Cart page servlet.
  */
 @WebServlet(urlPatterns = "/cart")
 public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().println("Cart page");
+        req.getRequestDispatcher("cart.html").forward(req, resp);
     }
 }
