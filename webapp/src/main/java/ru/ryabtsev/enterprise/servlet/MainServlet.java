@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 /**
  * Main page servlet.
  */
-@WebServlet(urlPatterns = "/main")
+@WebServlet(urlPatterns = {"/main", "/index"})
 public class MainServlet extends HttpServlet {
 
     @Override
@@ -25,6 +25,6 @@ public class MainServlet extends HttpServlet {
     }
 
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("main.html").forward(req,resp);
+        req.getRequestDispatcher("index.jsp").forward(req,resp);
     }
 }

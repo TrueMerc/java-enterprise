@@ -1,7 +1,17 @@
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+</head>
 <body>
-<h2>Hello World!!!!!!</h2>
-<h3>Hello all!!!</h3>
-<h3>Hi, all!!!</h3>
+<h1>Main page</h1>
+<list>
+    <ul><a href="cart">Cart</a></ul>
+    <ul><a href="catalog">Catalog</a></ul>
+    <ul><a href="order">Order</a></ul>
+    <ul><a href="product">Product</a></ul>
+    </ul>
+</list>
+<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>
