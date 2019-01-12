@@ -6,10 +6,10 @@
 <body>
 <h1>Main page</h1>
 <list>
-    <ul><a href="./cart.html">Cart</a></ul>
-    <ul><a href="./catalog.html">Catalog</a></ul>
-    <ul><a href="./order.html">Order</a></ul>
-    <ul><a href="./product.html">Product</a></ul>
+    <ul><a href="cart">Cart</a></ul>
+    <ul><a href="catalog">Catalog</a></ul>
+    <ul><a href="order">Order</a></ul>
+    <ul><a href="product">Product</a></ul>
     </ul>
 </list>
 </body>

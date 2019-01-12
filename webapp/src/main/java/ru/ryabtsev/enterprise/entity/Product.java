@@ -19,7 +19,7 @@ public class Product extends AbstractEntity {
      * @param name the name of this product.
      * @param price the price of this product.
      */
-    Product(@NonNull String name, float price) {
+    public Product(@NonNull String name, float price) {
         this.name = name;
         this.price = price;
     }
@@ -30,7 +30,7 @@ public class Product extends AbstractEntity {
      * @param price the price of this product.
      * @param description the description of this product.
      */
-    Product(@NonNull String name, float price, @NonNull String description) {
+    public Product(@NonNull String name, float price, @NonNull String description) {
         this(name, price);
         setDescription(description);
     }
@@ -39,8 +39,7 @@ public class Product extends AbstractEntity {
      * Sets product description.
      * @param description the description of this product.
      */
-    void setDescription(@NonNull String description) {
+    public void setDescription(@NonNull String description) {
         this.description = description;
     }
-
 }

@@ -8,9 +8,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Order</title>
 </head>
 <body>
-$END$
+<h1>Order</h1>
+<list>
+    <ul><a href="index">Main page</a></ul>
+    <ul><a href="cart">Cart</a></ul>
+    <ul><a href="catalog">Catalog</a></ul>
+    <ul><a href="product">Product</a></ul>
+    </ul>
+</list>
 </body>
 </html>
