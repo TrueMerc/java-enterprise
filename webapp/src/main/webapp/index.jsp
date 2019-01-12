@@ -1,7 +1,16 @@
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+</head>
 <body>
-<h2>Hello World!!!!!!</h2>
-<h3>Hello all!!!</h3>
-<h3>Hi, all!!!</h3>
+<h1>Main page</h1>
+<list>
+    <ul><a href="./cart.html">Cart</a></ul>
+    <ul><a href="./catalog.html">Catalog</a></ul>
+    <ul><a href="./order.html">Order</a></ul>
+    <ul><a href="./product.html">Product</a></ul>
+    </ul>
+</list>
 </body>
 </html>
