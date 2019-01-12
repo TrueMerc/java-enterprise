@@ -1,4 +1,4 @@
-package ru.ryabtsev.enterprise.servlet;
+package ru.ryabtsev.enterprise.servlet.product;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

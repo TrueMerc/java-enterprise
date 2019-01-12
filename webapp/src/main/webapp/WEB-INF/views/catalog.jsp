@@ -16,19 +16,6 @@
             border-collapse: collapse;
             padding: 15px
         }
-
-        table#t01, th#t01, td#t01 {
-            border: none;
-            padding: 15px
-        }
-
-        table#t01 th {
-            border: none;
-        }
-
-        table#t01 td {
-            border: none;
-        }
     </style>
     <title>Products Catalog</title>
 </head>
@@ -37,35 +24,37 @@
 
 <table>
     <tbody>
-    <%
-        final Object productsObject = request.getAttribute(FieldKeys.PRODUCTS);
-        final Collection<Product> products = (Collection<Product>)productsObject;
-        int index = 1;
-        for(final Product product: products) {
-    %>
-        <tr>
-            <td align = "center"><%=index%>.</td>
-            <td align = "left"><%=product.getName()%></td>
-            <td align = "left"><%=product.getPrice()%></td>
-            <td align = "left"><%=(product.getDescription() == null) ? "" : product.getDescription()%></td>
-        </tr>
-    <%
-            ++index;
-        }
-    %>
+        <th>Id</th>
+        <th align="center">Product name</th>
+        <th align="center">Price</th>
+        <th align="center">Description</th>
+        <th colspan="2">Actions</th>
+        <%
+            final Object productsObject = request.getAttribute(FieldKeys.PRODUCTS);
+            final Collection<Product> products = (Collection<Product>)productsObject;
+            int index = 1;
+            for(final Product product: products) {
+        %>
+            <tr>
+                <td align = "center"><%=index%>.</td>
+                <td align = "left"><%=product.getName()%></td>
+                <td align = "left"><%=product.getPrice()%></td>
+                <td align = "left"><%=(product.getDescription() == null) ? "" : product.getDescription()%></td>
+                <td align = "center">Edit</td>
+                <td align = "center">Delete</td>
+            </tr>
+        <%
+                ++index;
+            }
+        %>
     </tbody>
 </table>
 
-<p>Move to another site pages</p>
-<table id="t01">
-    <tbody>
-        <tr>
-            <td><a href="index">Main page</a></td>
-            <td><a href="cart">Cart</a></td>
-            <td><a href="order">Order</a></td>
-            <td><a href="product">Product</a></td>
-        </tr>
-    </tbody>
-</table>
+<p></p>
+<form action="product-add">
+    <button type="submit" class="green">Add new product</button>
+</form>
+
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

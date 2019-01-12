@@ -19,5 +19,6 @@
     <ul><a href="order">Order</a></ul>
     </ul>
 </list>
+<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>
 </html>

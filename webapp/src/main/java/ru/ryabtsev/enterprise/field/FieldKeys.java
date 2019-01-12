@@ -8,5 +8,8 @@ import lombok.NonNull;
 public class FieldKeys {
 
     @NonNull
+    public static final String PRODUCT = "product";
+
+    @NonNull
     public static final String PRODUCTS = "products";
 }

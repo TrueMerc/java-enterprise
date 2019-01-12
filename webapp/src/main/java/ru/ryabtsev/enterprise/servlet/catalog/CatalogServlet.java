@@ -1,4 +1,4 @@
-package ru.ryabtsev.enterprise.servlet;
+package ru.ryabtsev.enterprise.servlet.catalog;
 
 import ru.ryabtsev.enterprise.entity.Product;
 import ru.ryabtsev.enterprise.field.FieldKeys;
