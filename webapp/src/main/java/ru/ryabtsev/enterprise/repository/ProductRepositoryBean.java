@@ -2,6 +2,8 @@ package ru.ryabtsev.enterprise.repository;
 
 import lombok.NonNull;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import ru.ryabtsev.enterprise.api.ProductRepository;
 import ru.ryabtsev.enterprise.entity.Product;
 
 import javax.annotation.PostConstruct;
@@ -12,7 +14,7 @@ import java.util.*;
  * Bean for products repository.
  */
 @ApplicationScoped
-public class ProductRepositoryBean {
+public class ProductRepositoryBean implements ProductRepository {
 
     @NonNull
     final private Map<String, Product> products = new LinkedHashMap<>();
@@ -41,5 +43,16 @@ public class ProductRepositoryBean {
             result.add(productEntry.getValue());
         }
         return result;
+    }
+
+    @Nullable
+    @Override
+    public Product get(String productId) {
+        return products.get(productId);
+    }
+
+    @Override
+    public void remove(String productId) {
+        products.remove(productId);
     }
 }
