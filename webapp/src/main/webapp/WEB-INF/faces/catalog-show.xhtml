@@ -6,29 +6,53 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<f:view>
-    <h1><h:outputLabel value="Products catalog"/></h1>
+<style type="text/css">
+    .value {
+        font-weight: bold;
+    }
 
-    <style type="text/css">
-        .ui-treetable table {
-            table-layout: fixed
-        }
+    .ui-datatable {
+        margin-bottom: 25px
+    }
+
+    .ui-datatable .ui-datatable-footer {
+    text-align:left;
+    }
+
+    .ui-datalist ul {
+        padding: 0 0 0 10px;
+        margin: 5px 0;
+    }
+
+    .ui-datatable .ui-button-icon-only .ui-button-text {
+        padding: 0;
+        line-height: 1.2;
+    }
     </style>
+<h:head></h:head>
+<f:view>
+    <h1><p:outputLabel value="Products catalog"/></h1>
 
     <h:form>
         <p:dataTable value="#{catalogController.products}" var="product">
-            <f:facet name="header">
+            <f:facet name="header" style="text-align: center; font-size: 1.5em;">
                 Products catalog
             </f:facet>
-            <p:column headerText="Name" sortable="true" sortBy="#{product.name}">
-                <h:outputText value="#{product.name}" />
+            <p:column headerText="Name" width="200" sortable="true" sortBy="#{product.name}" style="ttext-align: center; font-size: 1.5em;">
+                <p:outputLabel value="#{product.name}" />
             </p:column>
-            <p:column headerText="Price" sortable="true" sortBy="#{product.price}">
-                <h:outputText value="#{product.price}" />
+            <p:column headerText="Price" width="200" sortable="true" sortBy="#{product.price}" style="text-align: center; font-size: 1.5em;">
+                <p:outputLabel value="#{product.price}" />
             </p:column>
-            <p:column headerText="Description" sortable="false">
-                <h:outputText value="#{product.description}" />
+            <p:column headerText="Description" width="200" sortable="true" style="text-align: center; font-size: 1.5em;">
+                <p:outputLabel value="#{product.description}" />
             </p:column>
+            <p:column headerText="Edit" width="30" style="text-align: center; font-size: 1.5em">
+                <p:link>
+                    <i class="fa fa-edit" style="text-align: center; font-size: 1.5em; margin: 5px"/>
+                </p:link>
+            </p:column>
+
         </p:dataTable>
     </h:form>
 </f:view>

@@ -25,6 +25,14 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>primefaces-maven-repository</id>
+            <name>PrimeFaces Maven Repository</name>
+            <url>http://repository.primefaces.org</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -54,6 +62,17 @@
             <artifactId>primefaces</artifactId>
             <version>RELEASE</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>afterdark</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>all-themes</artifactId>
+            <version>RELEASE</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.sun.faces</groupId>
