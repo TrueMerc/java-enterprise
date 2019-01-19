@@ -4,8 +4,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
 <f:view>
-    <h:outputLabel value="Hello, world"/>
+    <h1><p:outputLabel value="Online-shop main page"/></h1>
+
+    <p><p:link outcome="catalog-show" value="Catalog" style="font-size: 1.5em;"></p:link></p>
+    <p><p:link outcome="cart-edit" value="Cart" style="font-size: 1.5em;"></p:link></p>
 </f:view>
 </html>
