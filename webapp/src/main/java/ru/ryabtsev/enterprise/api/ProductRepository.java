@@ -16,12 +16,6 @@ import java.util.Map;
 public interface ProductRepository {
 
     /**
-     * Adds given product in repository.
-     * @param product product.
-     */
-    void add(@NonNull Product product);
-
-    /**
      * Returns collection which contains all products from repository.
      * @return
      */
@@ -48,4 +42,8 @@ public interface ProductRepository {
     void merge(Product product);
 
 
+    /**
+     * Persists product into products repository.
+     */
+    void persist(Product product);
 }

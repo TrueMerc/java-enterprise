@@ -26,7 +26,7 @@ import java.io.Serializable;
 public class ProductEditionController implements Serializable {
 
     @Inject
-    private CatalogController productRepository;
+    private ProductRepository productRepository;
 
     @Nullable
     private String productId;
@@ -79,6 +79,4 @@ public class ProductEditionController implements Serializable {
     public void setId(@Nullable final String productId) {
         this.productId = productId;
     }
-
-
 }

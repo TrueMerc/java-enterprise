@@ -30,6 +30,9 @@
     }
     </style>
 <h:head></h:head>
+<f:metadata>
+    <f:viewAction action="#{catalogController.reload}"/>
+</f:metadata>
 <f:view>
     <h1><p:outputLabel value="Products catalog"/></h1>
 
@@ -67,9 +70,7 @@
 
         <p:outputPanel>
             <p:spacer height="20" />
-            <p:commandButton value="CREATE" action="#{catalogController.addNew}">
-
-            </p:commandButton>
+            <p:commandButton value="CREATE" ajax="false" action="#{catalogController.addNew}"/>
             <p:spacer width="20" />
             <p:commandButton value="REFRESH" update="@form"/>
         </p:outputPanel>

@@ -16,10 +16,6 @@ import java.util.*;
 public class ProductRepositoryBean extends AbstractRepository implements ProductRepository {
 
 
-    public void add(@NonNull Product product) {
-        addEntity(product);
-    }
-
     @NonNull
     public Collection<Product> getAll() {
         return entityManager.createQuery("SELECT p FROM Product p", Product.class).getResultList();
@@ -34,18 +30,21 @@ public class ProductRepositoryBean extends AbstractRepository implements Product
                         .setParameter("id", productId)
                         .setMaxResults(1)
         );
-        //return entityManager.find(Product.class, productId);
     }
 
     @Override
     public void remove(String productId) {
-        //products.remove(productId);
+        entityManager.remove(get(productId));
     }
 
     @Override
     public void merge(Product product) {
-        //products.put(product.getId(), product);
-        //entityManager.persist(product);
-        addEntity(product);
+        entityManager.merge(product);
     }
+
+    @Override
+    public void persist(Product product) {
+        super.persist(product);
+    }
+
 }

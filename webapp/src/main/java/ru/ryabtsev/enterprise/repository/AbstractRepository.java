@@ -19,7 +19,7 @@ abstract public class AbstractRepository {
         return resultList.isEmpty() ? null : resultList.get(0);
     }
 
-    <T> void addEntity(@NotNull final T entity) {
+    protected <T> void persist(@NotNull final T entity) {
         entityManager.persist(entity);
     }
 }

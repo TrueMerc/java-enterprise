@@ -37,7 +37,7 @@ public class ProductAddServlet extends HttpServlet {
                     Product product = (description != null) ?
                             new Product(name, price, description) :
                             new Product(name, price);
-                    productRepository.add(product);
+                    productRepository.persist(product);
                 }
             }
         }

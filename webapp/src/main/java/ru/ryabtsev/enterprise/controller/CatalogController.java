@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@ApplicationScoped
 @Named("catalogController")
 @ViewScoped
 @ManagedBean
@@ -39,7 +38,7 @@ public class CatalogController implements Serializable {
         reload();
     }
 
-    private void reload() {
+    public void reload() {
         productList.clear();
         productList.addAll(productRepository.getAll());
     }
@@ -74,10 +73,16 @@ public class CatalogController implements Serializable {
         productList.add(product);
     }
 
-    @NotNull
     public String addNew() {
-        Product product = new Product();
-        productList.add(product);
-        return "product-edit?id=" + product.getId();
+        final Product product = new Product();
+        productRepository.persist(product);
+        Product fromRepository = productRepository.get(product.getId());
+        if(fromRepository != null) {
+            return "product-edit?id=" + product.getId();
+        }
+        else {
+            System.out.println("Can't find persisted object.");
+            return "catalog-show";
+        }
     }
 }
