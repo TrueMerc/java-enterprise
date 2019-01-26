@@ -14,7 +14,7 @@
         <from-view-id></from-view-id>
         <navigation-case>
             <from-outcome>index</from-outcome>
-            <to-view-id>faces/index.xhtml</to-view-id>
+            <to-view-id>/WEB-INF/faces/index.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>catalog-show</from-outcome>
@@ -23,6 +23,10 @@
         <navigation-case>
             <from-outcome>cart-edit</from-outcome>
             <to-view-id>/WEB-INF/faces/cart-edit.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>product-edit</from-outcome>
+            <to-view-id>/WEB-INF/faces/product-edit.xhtml</to-view-id>
         </navigation-case>
 
     </navigation-rule>

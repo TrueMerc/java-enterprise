@@ -4,6 +4,7 @@ import lombok.NonNull;
 import org.jetbrains.annotations.Nullable;
 import ru.ryabtsev.enterprise.entity.Product;
 
+import javax.enterprise.context.ApplicationScoped;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -40,4 +41,11 @@ public interface ProductRepository {
      * @param productId product id.
      */
     void remove(String productId);
+
+    /**
+     * Merges product into products repository.
+     */
+    void merge(Product product);
+
+
 }

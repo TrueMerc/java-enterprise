@@ -38,22 +38,42 @@
             <f:facet name="header" style="text-align: center; font-size: 1.5em;">
                 Products catalog
             </f:facet>
-            <p:column headerText="Name" width="200" sortable="true" sortBy="#{product.name}" style="ttext-align: center; font-size: 1.5em;">
+
+            <p:column headerText="Name" width="50" sortable="true" sortBy="#{product.name}" style="ttext-align: center;">
                 <p:outputLabel value="#{product.name}" />
             </p:column>
-            <p:column headerText="Price" width="200" sortable="true" sortBy="#{product.price}" style="text-align: center; font-size: 1.5em;">
+
+            <p:column headerText="Price" width="50" sortable="true" sortBy="#{product.price}" style="text-align: center;">
                 <p:outputLabel value="#{product.price}" />
             </p:column>
-            <p:column headerText="Description" width="200" sortable="true" style="text-align: center; font-size: 1.5em;">
+
+            <p:column headerText="Description" width="200" sortable="true" style="text-align: center;">
                 <p:outputLabel value="#{product.description}" />
             </p:column>
-            <p:column headerText="Edit" width="30" style="text-align: center; font-size: 1.5em">
-                <p:link>
+
+            <p:column headerText="Edit" width="30" style="text-align: center;">
+                <p:link outcome="product-edit">
+                    <f:param name="id" value="#{product.id}"/>
                     <i class="fa fa-edit" style="text-align: center; font-size: 1.5em; margin: 5px"/>
                 </p:link>
             </p:column>
 
+            <p:column headerText="Delete" width="30" style="text-align: center;">
+                <p:commandLink actionListener="#{catalogController.remove(product.id)}" update="@form">
+                    <i class="fa fa-remove" style="text-align: center; font-size: 1.5em; margin: 5px"/>
+                </p:commandLink>
+            </p:column>
         </p:dataTable>
+
+        <p:outputPanel>
+            <p:spacer height="20" />
+            <p:commandButton value="CREATE" action="#{catalogController.addNew}">
+
+            </p:commandButton>
+            <p:spacer width="20" />
+            <p:commandButton value="REFRESH" update="@form"/>
+        </p:outputPanel>
     </h:form>
+
 </f:view>
 </html>
