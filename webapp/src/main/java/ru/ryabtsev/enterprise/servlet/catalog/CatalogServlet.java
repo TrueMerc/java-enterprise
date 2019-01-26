@@ -1,8 +1,8 @@
 package ru.ryabtsev.enterprise.servlet.catalog;
 
+import ru.ryabtsev.enterprise.api.ProductRepository;
 import ru.ryabtsev.enterprise.entity.Product;
 import ru.ryabtsev.enterprise.field.FieldKeys;
-import ru.ryabtsev.enterprise.repository.ProductRepositoryBean;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -20,7 +20,7 @@ import java.util.Collection;
 public class CatalogServlet extends HttpServlet {
 
     @Inject
-    private ProductRepositoryBean productRepository;
+    private ProductRepository productRepository;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

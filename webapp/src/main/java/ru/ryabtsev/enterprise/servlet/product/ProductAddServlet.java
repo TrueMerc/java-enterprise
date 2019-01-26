@@ -1,7 +1,7 @@
 package ru.ryabtsev.enterprise.servlet.product;
 
+import ru.ryabtsev.enterprise.api.ProductRepository;
 import ru.ryabtsev.enterprise.entity.Product;
-import ru.ryabtsev.enterprise.repository.ProductRepositoryBean;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -15,7 +15,7 @@ import java.io.IOException;
 public class ProductAddServlet extends HttpServlet {
 
     @Inject
-    private ProductRepositoryBean productRepository;
+    private ProductRepository productRepository;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,7 +37,7 @@ public class ProductAddServlet extends HttpServlet {
                     Product product = (description != null) ?
                             new Product(name, price, description) :
                             new Product(name, price);
-                    productRepository.add(product);
+                    productRepository.persist(product);
                 }
             }
         }

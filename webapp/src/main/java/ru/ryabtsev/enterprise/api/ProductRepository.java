@@ -4,6 +4,7 @@ import lombok.NonNull;
 import org.jetbrains.annotations.Nullable;
 import ru.ryabtsev.enterprise.entity.Product;
 
+import javax.enterprise.context.ApplicationScoped;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -13,12 +14,6 @@ import java.util.Map;
  * Provides interface for repository which contains products list.
  */
 public interface ProductRepository {
-
-    /**
-     * Adds given product in repository.
-     * @param product product.
-     */
-    void add(@NonNull Product product);
 
     /**
      * Returns collection which contains all products from repository.
@@ -40,4 +35,15 @@ public interface ProductRepository {
      * @param productId product id.
      */
     void remove(String productId);
+
+    /**
+     * Merges product into products repository.
+     */
+    void merge(Product product);
+
+
+    /**
+     * Persists product into products repository.
+     */
+    void persist(Product product);
 }

@@ -2,26 +2,51 @@ package ru.ryabtsev.enterprise.entity;
 
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 import org.jetbrains.annotations.Nullable;
+
+import javax.persistence.*;
 
 /**
  * Represents product entity in 'Simple shop' web application.
  */
+@Entity
+@Table(name="app_Product")
 @Getter
+@Setter
 public class Product extends AbstractEntity {
 
-    @NonNull private String name;
-    @NonNull private float price;
-    @Nullable private String description;
+    @NonNull
+    private String name;
+
+    private
+    float price;
+
+    @Nullable
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
+    @Nullable
+    @ManyToOne(targetEntity = Category.class)
+    private Category category;
+
+    /**
+     * Create new product without any attributes.
+     */
+    public Product() {
+        this("ProductName", 0f);
+    }
 
     /**
      * Creates new product without description.
      * @param name the name of this product.
      * @param price the price of this product.
      */
-    public Product(@NonNull String name, float price) {
+    public Product(@NonNull final String name, float price) {
         this.name = name;
         this.price = price;
+        this.description = null;
+        this.category = null;
     }
 
     /**
@@ -30,16 +55,8 @@ public class Product extends AbstractEntity {
      * @param price the price of this product.
      * @param description the description of this product.
      */
-    public Product(@NonNull String name, float price, @NonNull String description) {
+    public Product(@NonNull final String name, float price, @NonNull String description) {
         this(name, price);
         setDescription(description);
-    }
-
-    /**
-     * Sets product description.
-     * @param description the description of this product.
-     */
-    public void setDescription(@NonNull String description) {
-        this.description = description;
     }
 }
