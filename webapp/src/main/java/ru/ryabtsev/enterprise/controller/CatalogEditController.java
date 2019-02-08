@@ -21,9 +21,9 @@ import java.util.List;
 @ViewScoped
 @ManagedBean
 @URLMapping(
-        id="catalog-show",
-        pattern="/catalog-show",
-        viewId = "/WEB-INF/faces/catalog-show.xhtml"
+        id="catalog-edit",
+        pattern="/catalog-edit",
+        viewId = "/WEB-INF/faces/catalog-edit.xhtml"
 )
 public class CatalogController implements Serializable {
 
