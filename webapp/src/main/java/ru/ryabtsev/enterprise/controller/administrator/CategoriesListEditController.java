@@ -1,14 +1,14 @@
-package ru.ryabtsev.enterprise.controller;
+package ru.ryabtsev.enterprise.controller.administrator;
 
 import com.ocpsoft.pretty.faces.annotation.URLMapping;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import ru.ryabtsev.enterprise.api.ProductRepository;
-import ru.ryabtsev.enterprise.entity.Product;
+import ru.ryabtsev.enterprise.api.CategoryRepository;
+import ru.ryabtsev.enterprise.entity.Category;
+
 
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -16,22 +16,21 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
-@Named("catalogController")
+@Named("categoryController")
 @ViewScoped
 @ManagedBean
 @URLMapping(
-        id="catalog-edit",
-        pattern="/catalog-edit",
-        viewId = "/WEB-INF/faces/catalog-edit.xhtml"
+        id="category-edit",
+        pattern="/category-edit",
+        viewId = "/WEB-INF/faces/category-edit.xhtml"
 )
-public class CatalogController implements Serializable {
+public class CategoriesEditController implements Serializable {
 
     @Inject
-    private ProductRepository productRepository;
+    private CategoryRepository categoryRepository;
 
     @NotNull
-    private List<Product> productList = new ArrayList<>();
+    private List<Category> categoriesList = new ArrayList<>();
 
     @PostConstruct
     private void init() {
@@ -39,13 +38,13 @@ public class CatalogController implements Serializable {
     }
 
     public void reload() {
-        productList.clear();
-        productList.addAll(productRepository.getAll());
+        categoriesList.clear();
+        categoriesList.addAll(categoryRepository.getAll());
     }
 
     @NotNull
-    public List<Product> getProducts() {
-        return productList;
+    public List<Category> getCategories() {
+        return categoriesList;
     }
 
 
@@ -55,8 +54,8 @@ public class CatalogController implements Serializable {
      * @return product with given productId if it exists or null if it isn't.
      */
     @Nullable
-    public Product get(String productId) {
-        return productRepository.get(productId);
+    public Category get(String productId) {
+        return categoryRepository.get(productId);
     }
 
     /**
@@ -64,21 +63,21 @@ public class CatalogController implements Serializable {
      * @param productId identifier of product which should be deleted.
      */
     public void remove(String productId) {
-        productRepository.remove(productId);
+        categoryRepository.remove(productId);
         reload();
     }
 
-    public void merge(Product product) {
-        productRepository.merge(product);
-        productList.add(product);
+    public void merge(Category product) {
+        categoryRepository.merge(product);
+        categoriesList.add(product);
     }
 
     public String addNew() {
-        final Product product = new Product();
-        productRepository.persist(product);
-        Product fromRepository = productRepository.get(product.getId());
+        final Category category = new Category();
+        categoryRepository.persist(category);
+        Category fromRepository = categoryRepository.get(category.getId());
         if(fromRepository != null) {
-            return "product-edit?id=" + product.getId();
+            return "product-edit?id=" + category.getId();
         }
         else {
             System.out.println("Can't find persisted object.");
