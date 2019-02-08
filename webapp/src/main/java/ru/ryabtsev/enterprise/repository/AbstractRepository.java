@@ -19,7 +19,9 @@ abstract public class AbstractRepository {
         return resultList.isEmpty() ? null : resultList.get(0);
     }
 
-    protected <T> void persist(@NotNull final T entity) {
+    protected <T> void doPersist(@NotNull final T entity) {
         entityManager.persist(entity);
     }
+
+    protected <T> void doMerge(@NotNull final T entity) { entityManager.merge(entity); }
 }

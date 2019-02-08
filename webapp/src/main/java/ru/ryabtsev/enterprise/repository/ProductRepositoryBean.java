@@ -10,7 +10,7 @@ import javax.ejb.Stateless;
 import java.util.*;
 
 /**
- * Bean for products repository.
+ * Bean for products repository manipulation.
  */
 @Stateless
 public class ProductRepositoryBean extends AbstractRepository implements ProductRepository {
@@ -39,12 +39,12 @@ public class ProductRepositoryBean extends AbstractRepository implements Product
 
     @Override
     public void merge(Product product) {
-        entityManager.merge(product);
+        super.doMerge(product);
     }
 
     @Override
     public void persist(Product product) {
-        super.persist(product);
+        super.doPersist(product);
     }
 
 }
