@@ -7,6 +7,7 @@ import ru.ryabtsev.enterprise.api.ProductRepository;
 import ru.ryabtsev.enterprise.entity.Product;
 
 import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
 import java.util.*;
 
 /**
@@ -14,7 +15,6 @@ import java.util.*;
  */
 @Stateless
 public class ProductRepositoryBean extends AbstractRepository implements ProductRepository {
-
 
     @NonNull
     public Collection<Product> getAll() {
@@ -34,7 +34,10 @@ public class ProductRepositoryBean extends AbstractRepository implements Product
 
     @Override
     public void remove(String productId) {
-        entityManager.remove(get(productId));
+        if(productId == null || productId.isEmpty()) {
+            System.out.println("Unexpected situation!!!");
+        }
+        super.doRemove(get(productId));
     }
 
     @Override
@@ -46,5 +49,4 @@ public class ProductRepositoryBean extends AbstractRepository implements Product
     public void persist(Product product) {
         super.doPersist(product);
     }
-
 }

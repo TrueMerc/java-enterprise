@@ -18,5 +18,5 @@ public abstract class AbstractEntity {
 
     @NonNull
     @Id
-    private final String id = UUID.randomUUID().toString();
+    protected final String id = UUID.randomUUID().toString();
 }

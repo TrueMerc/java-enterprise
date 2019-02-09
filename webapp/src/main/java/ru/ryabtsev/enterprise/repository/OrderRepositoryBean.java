@@ -4,11 +4,13 @@ import org.jetbrains.annotations.Nullable;
 import ru.ryabtsev.enterprise.api.OrderRepository;
 import ru.ryabtsev.enterprise.entity.Order;
 
+import javax.enterprise.context.ApplicationScoped;
 import java.util.Collection;
 
 /**
  * Bean for orders repository manipulation.
  */
+@ApplicationScoped
 public class OrderRepositoryBean extends AbstractRepository implements OrderRepository {
 
     @Override

@@ -37,32 +37,32 @@
     <h1><p:outputLabel value="Products catalog"/></h1>
 
     <h:form>
-        <p:dataTable value="#{catalogController.products}" var="product">
+        <p:dataTable value="#{catalogController.products}" var="category">
             <f:facet name="header" style="text-align: center; font-size: 1.5em;">
                 Products catalog
             </f:facet>
 
-            <p:column headerText="Name" width="50" sortable="true" sortBy="#{product.name}" style="ttext-align: center;">
-                <p:outputLabel value="#{product.name}" />
+            <p:column headerText="Name" width="50" sortable="true" sortBy="#{category.name}" style="ttext-align: center;">
+                <p:outputLabel value="#{category.name}" />
             </p:column>
 
-            <p:column headerText="Price" width="50" sortable="true" sortBy="#{product.price}" style="text-align: center;">
-                <p:outputLabel value="#{product.price}" />
+            <p:column headerText="Price" width="50" sortable="true" sortBy="#{category.price}" style="text-align: center;">
+                <p:outputLabel value="#{category.price}" />
             </p:column>
 
             <p:column headerText="Description" width="200" sortable="true" style="text-align: center;">
-                <p:outputLabel value="#{product.description}" />
+                <p:outputLabel value="#{category.description}" />
             </p:column>
 
             <p:column headerText="Edit" width="30" style="text-align: center;">
-                <p:link outcome="product-edit">
-                    <f:param name="id" value="#{product.id}"/>
+                <p:link outcome="category-edit">
+                    <f:param name="id" value="#{category.id}"/>
                     <i class="fa fa-edit" style="text-align: center; font-size: 1.5em; margin: 5px"/>
                 </p:link>
             </p:column>
 
             <p:column headerText="Delete" width="30" style="text-align: center;">
-                <p:commandLink actionListener="#{catalogController.remove(product.id)}" update="@form">
+                <p:commandLink actionListener="#{catalogController.remove(category.id)}" update="@form">
                     <i class="fa fa-remove" style="text-align: center; font-size: 1.5em; margin: 5px"/>
                 </p:commandLink>
             </p:column>

@@ -16,21 +16,22 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Named("categoryController")
+@Named("categoriesListController")
 @ViewScoped
 @ManagedBean
 @URLMapping(
-        id="category-edit",
-        pattern="/category-edit",
-        viewId = "/WEB-INF/faces/category-edit.xhtml"
+        id="categories-list-edit",
+        pattern="/categories-list-edit",
+        viewId = "/WEB-INF/faces/categories-list-edit.xhtml"
 )
-public class CategoriesEditController implements Serializable {
+public class CategoriesListEditController implements Serializable {
 
     @Inject
     private CategoryRepository categoryRepository;
 
     @NotNull
-    private List<Category> categoriesList = new ArrayList<>();
+    private List<Category> categories = new ArrayList<>();
+
 
     @PostConstruct
     private void init() {
@@ -38,13 +39,13 @@ public class CategoriesEditController implements Serializable {
     }
 
     public void reload() {
-        categoriesList.clear();
-        categoriesList.addAll(categoryRepository.getAll());
+        categories.clear();
+        categories.addAll(categoryRepository.getAll());
     }
 
     @NotNull
     public List<Category> getCategories() {
-        return categoriesList;
+        return categories;
     }
 
 
@@ -69,7 +70,7 @@ public class CategoriesEditController implements Serializable {
 
     public void merge(Category product) {
         categoryRepository.merge(product);
-        categoriesList.add(product);
+        categories.add(product);
     }
 
     public String addNew() {
@@ -77,11 +78,11 @@ public class CategoriesEditController implements Serializable {
         categoryRepository.persist(category);
         Category fromRepository = categoryRepository.get(category.getId());
         if(fromRepository != null) {
-            return "product-edit?id=" + category.getId();
+            return "category-edit?id=" + category.getId();
         }
         else {
             System.out.println("Can't find persisted object.");
-            return "catalog-show";
+            return "categories-list-edit";
         }
     }
 }

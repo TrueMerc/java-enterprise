@@ -32,7 +32,7 @@
             <td><a href="catalog">Catalog</a></td>
             <td><a href="cart">Cart</a></td>
             <td><a href="order">Order</a></td>
-            <td><a href="product">Product</a></td>
+            <td><a href="category">Product</a></td>
         </tr>
         </tbody>
     </table>

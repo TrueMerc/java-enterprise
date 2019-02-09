@@ -1,4 +1,4 @@
-package ru.ryabtsev.enterprise.controller;
+package ru.ryabtsev.enterprise.controller.administrator;
 
 import com.ocpsoft.pretty.faces.annotation.URLMapping;
 import org.jetbrains.annotations.NotNull;
@@ -8,7 +8,6 @@ import ru.ryabtsev.enterprise.entity.Product;
 
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Named("catalogController")
+@Named("catalogEditController")
 @ViewScoped
 @ManagedBean
 @URLMapping(
@@ -31,23 +30,29 @@ public class CatalogEditController implements Serializable {
     private ProductRepository productRepository;
 
     @NotNull
-    private List<Product> productList = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
 
     @PostConstruct
     private void init() {
         reload();
     }
 
+    /**
+     * Reloads data from remote repository.
+     */
     public void reload() {
-        productList.clear();
-        productList.addAll(productRepository.getAll());
+        products.clear();
+        products.addAll(productRepository.getAll());
     }
 
+    /**
+     * Returns list of all products which database contains.
+     * @return list of all products which database contains.
+     */
     @NotNull
     public List<Product> getProducts() {
-        return productList;
+        return products;
     }
-
 
     /**
      * Returns product with given productId if it exists or null if it isn't.
@@ -70,7 +75,7 @@ public class CatalogEditController implements Serializable {
 
     public void merge(Product product) {
         productRepository.merge(product);
-        productList.add(product);
+        products.add(product);
     }
 
     public String addNew() {
@@ -82,7 +87,7 @@ public class CatalogEditController implements Serializable {
         }
         else {
             System.out.println("Can't find persisted object.");
-            return "catalog-show";
+            return "catalog-edit";
         }
     }
 }

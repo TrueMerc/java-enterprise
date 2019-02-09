@@ -59,4 +59,11 @@ public class Product extends AbstractEntity {
         this(name, price);
         setDescription(description);
     }
+
+    /**
+     * Returns product category name if this name specified.
+     */
+    public String getCategoryName() {
+        return category != null ? category.getName() : "Unspecified";
+    }
 }

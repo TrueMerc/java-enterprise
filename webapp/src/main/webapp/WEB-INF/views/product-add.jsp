@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>New product description</title>
+    <title>New category description</title>
 </head>
-    <form action="product-add" method="post">
+    <form action="category-add" method="post">
         <table border="0" align="left" cellpadding="5">
             <tr>
                 <td>Name:</td>

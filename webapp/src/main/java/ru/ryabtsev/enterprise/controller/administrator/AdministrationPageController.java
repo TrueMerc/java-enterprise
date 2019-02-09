@@ -1,4 +1,4 @@
-package ru.ryabtsev.enterprise.controller;
+package ru.ryabtsev.enterprise.controller.administrator;
 
 
 import com.ocpsoft.pretty.faces.annotation.URLMapping;
