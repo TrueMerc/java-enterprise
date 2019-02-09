@@ -73,21 +73,8 @@ public class CatalogEditController implements Serializable {
         reload();
     }
 
-    public void merge(Product product) {
-        productRepository.merge(product);
-        products.add(product);
-    }
-
-    public String addNew() {
-        final Product product = new Product();
-        productRepository.persist(product);
-        Product fromRepository = productRepository.get(product.getId());
-        if(fromRepository != null) {
-            return "admin-product-edit?id=" + product.getId();
-        }
-        else {
-            System.out.println("Can't find persisted object.");
-            return "admin-catalog-edit";
-        }
+    public void add() {
+        productRepository.create();
+        reload();
     }
 }

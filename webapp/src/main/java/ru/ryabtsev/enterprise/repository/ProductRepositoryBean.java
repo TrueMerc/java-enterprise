@@ -48,7 +48,10 @@ public class ProductRepositoryBean extends AbstractRepository implements Product
 
     @Override
     public void remove(String productId) {
-        super.doRemove(get(productId));
+        final Product product = this.get(productId);
+        if( product != null) {
+            super.doRemove(product);
+        }
     }
 
     @Override
