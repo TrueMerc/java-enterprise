@@ -16,7 +16,7 @@
     }
 
     .ui-datatable .ui-datatable-footer {
-    text-align:left;
+        text-align:left;
     }
 
     .ui-datalist ul {
@@ -28,27 +28,24 @@
         padding: 0;
         line-height: 1.2;
     }
-    </style>
+</style>
 <h:head></h:head>
 <f:metadata>
-    <f:viewAction action="#{catalogController.reload}"/>
+    <f:viewAction action="#{categoriesListController.reload}"/>
 </f:metadata>
 <f:view>
     <h1><p:outputLabel value="Products catalog"/></h1>
 
     <h:form>
-        <p:dataTable value="#{catalogController.products}" var="category">
+        <p:dataTable value="#{categoriesListController.categories}" var="category">
             <f:facet name="header" style="text-align: center; font-size: 1.5em;">
-                Products catalog
+                Categories list
             </f:facet>
 
             <p:column headerText="Name" width="50" sortable="true" sortBy="#{category.name}" style="ttext-align: center;">
                 <p:outputLabel value="#{category.name}" />
             </p:column>
 
-            <p:column headerText="Price" width="50" sortable="true" sortBy="#{category.price}" style="text-align: center;">
-                <p:outputLabel value="#{category.price}" />
-            </p:column>
 
             <p:column headerText="Description" width="200" sortable="true" style="text-align: center;">
                 <p:outputLabel value="#{category.description}" />
@@ -62,7 +59,7 @@
             </p:column>
 
             <p:column headerText="Delete" width="30" style="text-align: center;">
-                <p:commandLink actionListener="#{catalogController.remove(category.id)}" update="@form">
+                <p:commandLink actionListener="#{categoriesListController.remove(category.id)}" update="@form">
                     <i class="fa fa-remove" style="text-align: center; font-size: 1.5em; margin: 5px"/>
                 </p:commandLink>
             </p:column>
@@ -70,9 +67,11 @@
 
         <p:outputPanel>
             <p:spacer height="20" />
-            <p:commandButton value="CREATE" ajax="false" action="#{catalogController.addNew}"/>
+            <p:commandButton value="CREATE" ajax="false" action="#{categoriesListController.addNew}"/>
             <p:spacer width="20" />
             <p:commandButton value="REFRESH" update="@form"/>
+            <p:spacer width="20" />
+            <p:linkButton value="GO BACK" outcome="admin" />
         </p:outputPanel>
     </h:form>
 

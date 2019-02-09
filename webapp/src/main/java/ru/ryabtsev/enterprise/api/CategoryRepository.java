@@ -1,4 +1,9 @@
 package ru.ryabtsev.enterprise.api;
 
-public class CategoryRepository {
+import ru.ryabtsev.enterprise.entity.Category;
+
+/**
+ * Provides interface to repository which contains products categories list.
+ */
+public interface CategoryRepository extends UuidBasedRepository<Category> {
 }

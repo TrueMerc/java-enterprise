@@ -33,13 +33,13 @@
             final Object productsObject = request.getAttribute(FieldKeys.PRODUCTS);
             final Collection<Product> products = (Collection<Product>)productsObject;
             int index = 1;
-            for(final Product product: products) {
+            for(final Product category: products) {
         %>
             <tr>
                 <td align = "center"><%=index%>.</td>
-                <td align = "left"><%=product.getName()%></td>
-                <td align = "left"><%=product.getPrice()%></td>
-                <td align = "left"><%=(product.getDescription() == null) ? "" : product.getDescription()%></td>
+                <td align = "left"><%=category.getName()%></td>
+                <td align = "left"><%=category.getPrice()%></td>
+                <td align = "left"><%=(category.getDescription() == null) ? "" : category.getDescription()%></td>
                 <td align = "center">Edit</td>
                 <td align = "center">Delete</td>
             </tr>
@@ -51,8 +51,8 @@
 </table>
 
 <p></p>
-<form action="product-add">
-    <button type="submit" class="green">Add new product</button>
+<form action="category-add">
+    <button type="submit" class="green">Add new category</button>
 </form>
 
 <jsp:include page="footer.jsp"/>

@@ -1,4 +1,4 @@
-package ru.ryabtsev.enterprise.controller;
+package ru.ryabtsev.enterprise.controller.administrator;
 
 import com.ocpsoft.pretty.faces.annotation.URLMapping;
 import org.jetbrains.annotations.NotNull;
@@ -15,7 +15,7 @@ import java.io.Serializable;
 /**
  * Controls product edition process.
  */
-@Named("productEditionController")
+@Named("productEditController")
 @ViewScoped
 @ManagedBean
 @URLMapping(
@@ -23,7 +23,7 @@ import java.io.Serializable;
         pattern = "/product-edit",
         viewId = "/WEB-INF/faces/product-edit.xhtml"
 )
-public class ProductEditionController implements Serializable {
+public class ProductEditController implements Serializable {
 
     @Inject
     private ProductRepository productRepository;
@@ -47,7 +47,7 @@ public class ProductEditionController implements Serializable {
      */
     public String save() {
         productRepository.merge(product);
-        return "catalog-show";
+        return "catalog-edit";
     }
 
 

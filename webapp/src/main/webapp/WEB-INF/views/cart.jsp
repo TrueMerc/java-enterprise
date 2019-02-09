@@ -16,7 +16,7 @@
     <ul><a href="index">Main page</a></ul>
     <ul><a href="catalog">Catalog</a></ul>
     <ul><a href="order">Order</a></ul>
-    <ul><a href="product">Product</a></ul>
+    <ul><a href="category">Product</a></ul>
     </ul>
 </list>
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
