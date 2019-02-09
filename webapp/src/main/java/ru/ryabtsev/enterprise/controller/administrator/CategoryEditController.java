@@ -20,9 +20,9 @@ import java.io.Serializable;
 @ViewScoped
 @ManagedBean
 @URLMapping(
-        id = "category-edit",
-        pattern = "/category-edit",
-        viewId = "/WEB-INF/faces/category-edit.xhtml"
+        id = "admin-category-edit",
+        pattern = "/admin-category-edit",
+        viewId = "/WEB-INF/faces/admin-category-edit.xhtml"
 )
 public class CategoryEditController implements Serializable {
     @Inject
@@ -47,7 +47,7 @@ public class CategoryEditController implements Serializable {
      */
     public String save() {
         categoryRepository.merge(category);
-        return "categories-list-edit";
+        return "admin-categories-list-edit";
     }
 
 

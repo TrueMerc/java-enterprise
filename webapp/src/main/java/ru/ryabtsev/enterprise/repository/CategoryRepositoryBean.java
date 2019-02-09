@@ -1,8 +1,10 @@
 package ru.ryabtsev.enterprise.repository;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.ryabtsev.enterprise.api.CategoryRepository;
 import ru.ryabtsev.enterprise.entity.Category;
+import ru.ryabtsev.enterprise.entity.Product;
 
 import javax.ejb.Stateless;
 import javax.enterprise.context.ApplicationScoped;
@@ -13,6 +15,14 @@ import java.util.Collection;
  */
 @Stateless
 public class CategoryRepositoryBean extends AbstractRepository implements CategoryRepository {
+
+    @NotNull
+    @Override
+    public Category create() {
+        Category category = new Category();
+        super.doPersist(category);
+        return category;
+    }
 
     @Override
     public Collection<Category> getAll() {

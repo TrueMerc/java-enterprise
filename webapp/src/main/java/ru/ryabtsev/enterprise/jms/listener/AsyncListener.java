@@ -1,4 +1,4 @@
-package ru.ryabtsev.enterprise.listener;
+package ru.ryabtsev.enterprise.jms.listener;
 
 import javax.ejb.Asynchronous;
 import javax.ejb.Stateless;

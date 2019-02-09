@@ -20,9 +20,9 @@ import java.util.List;
 @ViewScoped
 @ManagedBean
 @URLMapping(
-        id="catalog-edit",
-        pattern="/catalog-edit",
-        viewId = "/WEB-INF/faces/catalog-edit.xhtml"
+        id="admin-catalog-edit",
+        pattern="/admin-catalog-edit",
+        viewId = "/WEB-INF/faces/admin-catalog-edit.xhtml"
 )
 public class CatalogEditController implements Serializable {
 
@@ -73,21 +73,8 @@ public class CatalogEditController implements Serializable {
         reload();
     }
 
-    public void merge(Product product) {
-        productRepository.merge(product);
-        products.add(product);
-    }
-
-    public String addNew() {
-        final Product product = new Product();
-        productRepository.persist(product);
-        Product fromRepository = productRepository.get(product.getId());
-        if(fromRepository != null) {
-            return "product-edit?id=" + product.getId();
-        }
-        else {
-            System.out.println("Can't find persisted object.");
-            return "catalog-edit";
-        }
+    public void add() {
+        productRepository.create();
+        reload();
     }
 }

@@ -2,19 +2,33 @@ package ru.ryabtsev.enterprise.repository;
 
 import lombok.NonNull;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.ryabtsev.enterprise.api.ProductRepository;
+import ru.ryabtsev.enterprise.controller.LogInterceptor;
 import ru.ryabtsev.enterprise.entity.Product;
 
 import javax.ejb.Stateless;
-import javax.enterprise.context.ApplicationScoped;
+import javax.interceptor.Interceptors;
 import java.util.*;
 
 /**
  * Bean for products repository manipulation.
  */
 @Stateless
+@Interceptors({LogInterceptor.class})
 public class ProductRepositoryBean extends AbstractRepository implements ProductRepository {
+
+    @NotNull
+    @Override
+    public Product create() {
+        Product product = new Product();
+        super.doPersist(product);
+        return product;
+    }
+
+    @Override
+
 
     @NonNull
     public Collection<Product> getAll() {
@@ -34,10 +48,10 @@ public class ProductRepositoryBean extends AbstractRepository implements Product
 
     @Override
     public void remove(String productId) {
-        if(productId == null || productId.isEmpty()) {
-            System.out.println("Unexpected situation!!!");
+        final Product product = this.get(productId);
+        if( product != null) {
+            super.doRemove(product);
         }
-        super.doRemove(get(productId));
     }
 
     @Override
