@@ -31,50 +31,56 @@
     </style>
 <h:head></h:head>
 <f:metadata>
-    <f:viewAction action="#{catalogController.reload}"/>
+    <f:viewAction action="#{catalogShowController.reload}"/>
 </f:metadata>
 <f:view>
     <h1><p:outputLabel value="Products catalog"/></h1>
 
     <h:form>
-        <p:dataTable value="#{catalogController.products}" var="category">
+        <p:dataTable value="#{catalogShowController.products}" var="product">
             <f:facet name="header" style="text-align: center; font-size: 1.5em;">
                 Products catalog
             </f:facet>
 
-            <p:column headerText="Name" width="50" sortable="true" sortBy="#{category.name}" style="ttext-align: center;">
-                <p:outputLabel value="#{category.name}" />
+            <p:column headerText="Name" width="50" sortable="true" sortBy="#{product.name}" style="ttext-align: center;">
+                <p:outputLabel value="#{product.name}" />
             </p:column>
 
             <p:column headerText="Price" width="50" sortable="true" sortBy="#{category.price}" style="text-align: center;">
-                <p:outputLabel value="#{category.price}" />
+                <p:outputLabel value="#{product.price}" />
             </p:column>
 
             <p:column headerText="Description" width="200" sortable="true" style="text-align: center;">
-                <p:outputLabel value="#{category.description}" />
+                <p:outputLabel value="#{product.description}" />
             </p:column>
 
-            <p:column headerText="Edit" width="30" style="text-align: center;">
-                <p:link outcome="category-edit">
-                    <f:param name="id" value="#{category.id}"/>
-                    <i class="fa fa-edit" style="text-align: center; font-size: 1.5em; margin: 5px"/>
-                </p:link>
+            <p:column headerText="Category" width="200" sortable="true" style="text-align: center;">
+                <p:outputLabel value="#{product.category.name}" />
             </p:column>
 
-            <p:column headerText="Delete" width="30" style="text-align: center;">
-                <p:commandLink actionListener="#{catalogController.remove(category.id)}" update="@form">
-                    <i class="fa fa-remove" style="text-align: center; font-size: 1.5em; margin: 5px"/>
+            <p:column headerText="Add" width="30" style="text-align: center;">
+                <p:commandLink actionListener="#{cartController.addProduct(product)}" update="@form">
+                    <f:param name="id" value="#{product.id}"/>
+                    <i class="fa fa-cart-plus" style="text-align: center; font-size: 1.5em; margin: 5px"/>
                 </p:commandLink>
             </p:column>
         </p:dataTable>
 
         <p:outputPanel>
-            <p:spacer height="20" />
-            <p:commandButton value="CREATE" ajax="false" action="#{catalogController.addNew}"/>
-            <p:spacer width="20" />
-            <p:commandButton value="REFRESH" update="@form"/>
+            <p:outputLabel id="itemsCountLabel" value="ITEMS IN CART:" />
+            <p:spacer width="10" />
+            <p:outputLabel id="itemsCountValue" value="#{cartController.products.size()}" />
+        </p:outputPanel>
+        <p:spacer height="10" />
+        <p:outputPanel>
+            <p:outputLabel id="totalPriceLabel" value="TOTAL PRICE:" />
+            <p:spacer width="10" />
+            <p:outputLabel id="totalPriceValue" value="#{cartController.totalPrice}" />
+        </p:outputPanel>
+        <p:spacer height="10" />
+        <p:outputPanel>
+            <p:linkButton value ="GO TO CART" outcome="cart-edit" />
         </p:outputPanel>
     </h:form>
-
 </f:view>
 </html>

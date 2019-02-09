@@ -20,9 +20,9 @@ import java.util.List;
 @ViewScoped
 @ManagedBean
 @URLMapping(
-        id="categories-list-edit",
-        pattern="/categories-list-edit",
-        viewId = "/WEB-INF/faces/categories-list-edit.xhtml"
+        id="admin-categories-list-edit",
+        pattern="/admin-categories-list-edit",
+        viewId = "/WEB-INF/faces/admin-categories-list-edit.xhtml"
 )
 public class CategoriesListEditController implements Serializable {
 
@@ -78,11 +78,11 @@ public class CategoriesListEditController implements Serializable {
         categoryRepository.persist(category);
         Category fromRepository = categoryRepository.get(category.getId());
         if(fromRepository != null) {
-            return "category-edit?id=" + category.getId();
+            return "admin-category-edit?id=" + category.getId();
         }
         else {
             System.out.println("Can't find persisted object.");
-            return "categories-list-edit";
+            return "admin-categories-list-edit";
         }
     }
 }

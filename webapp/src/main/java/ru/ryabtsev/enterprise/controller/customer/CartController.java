@@ -1,14 +1,21 @@
-package ru.ryabtsev.enterprise.controller;
+package ru.ryabtsev.enterprise.controller.customer;
 
 import com.ocpsoft.pretty.faces.annotation.URLMapping;
-import ru.ryabtsev.enterprise.api.ProductRepository;
+import org.jetbrains.annotations.NotNull;
+import ru.ryabtsev.enterprise.api.OrderRepository;
+import ru.ryabtsev.enterprise.entity.Product;
+
 
 import javax.annotation.ManagedBean;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-@ViewScoped
+@Named("cartController")
+@SessionScoped
 @ManagedBean
 @URLMapping(
         id="cart-edit",
@@ -18,7 +25,23 @@ import java.io.Serializable;
 public class CartController implements Serializable {
 
     @Inject
-    private ProductRepository productRepository;
+    private OrderRepository productRepository;
 
-    public void init() {}
+    @NotNull
+    private List<Product> products = new ArrayList<>();
+
+    @NotNull
+    public List<Product> getProducts() { return products; }
+
+    public void addProduct(@NotNull final Product product) {
+        products.add(product);
+    }
+
+    public float getTotalPrice() {
+        float result = 0;
+        for (Product product: products ) {
+            result += product.getPrice();
+        }
+        return result;
+    }
 }

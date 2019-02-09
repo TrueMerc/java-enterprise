@@ -2,6 +2,7 @@ package ru.ryabtsev.enterprise.api;
 
 
 import lombok.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
@@ -11,6 +12,12 @@ import java.util.Collection;
  * which use UUID as primary key.
  */
 public interface UuidBasedRepository<ItemType> {
+
+    /**
+     * Creates new element in repository.
+     */
+    @NotNull
+    ItemType create();
 
     /**
      * Returns collection which contains all products from repository.

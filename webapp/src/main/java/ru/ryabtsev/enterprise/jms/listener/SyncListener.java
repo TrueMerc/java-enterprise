@@ -1,6 +1,5 @@
-package ru.ryabtsev.enterprise.listener;
+package ru.ryabtsev.enterprise.jms.listener;
 
-import javax.ejb.Asynchronous;
 import javax.enterprise.event.Observes;
 import javax.servlet.AsyncEvent;
 import java.util.logging.Logger;

@@ -19,9 +19,9 @@ import java.io.Serializable;
 @ViewScoped
 @ManagedBean
 @URLMapping(
-        id = "product-edit",
-        pattern = "/product-edit",
-        viewId = "/WEB-INF/faces/product-edit.xhtml"
+        id = "admin-product-edit",
+        pattern = "/admin-product-edit",
+        viewId = "/WEB-INF/faces/admin-product-edit.xhtml"
 )
 public class ProductEditController implements Serializable {
 
@@ -47,7 +47,7 @@ public class ProductEditController implements Serializable {
      */
     public String save() {
         productRepository.merge(product);
-        return "catalog-edit";
+        return "admin-catalog-edit";
     }
 
 
