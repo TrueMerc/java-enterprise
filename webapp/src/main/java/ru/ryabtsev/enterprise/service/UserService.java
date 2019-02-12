@@ -46,10 +46,15 @@ public class UserService {
     }
 
     public boolean check(final String login, final String password) {
+        LOGGER.warning("Try to login with: " + login + ", " + password);
         if(login == null || login.isEmpty()) return false;
         if(password == null || password.isEmpty()) return false;
         final User user = userRepository.getByLogin(login);
-        if(user == null) return false;
+        if(user == null) {
+            LOGGER.warning("User not found in database." );
+            return false;
+        }
+
         final String passwordHash = new Password(password).getHashCode();
         return passwordHash.equals(user.getPasswordHash());
     }
