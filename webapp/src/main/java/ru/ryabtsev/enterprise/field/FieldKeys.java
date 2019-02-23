@@ -12,4 +12,11 @@ public class FieldKeys {
 
     @NonNull
     public static final String PRODUCTS = "products";
+
+    @NonNull
+    public static final String USER_ID = "id";
+
+    @NonNull
+    public static final String LOGIN = "login";
+
 }

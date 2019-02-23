@@ -42,7 +42,7 @@
                 Products catalog
             </f:facet>
 
-            <p:column headerText="Name" width="50" sortable="true" sortBy="#{product.name}" style="ttext-align: center;">
+            <p:column headerText="Name" width="50" sortable="true" sortBy="#{product.name}" style="text-align: center;">
                 <p:outputLabel value="#{product.name}" />
             </p:column>
 
@@ -78,7 +78,7 @@
             <p:spacer width="20" />
             <p:commandButton value="REFRESH" update="@form"/>
             <p:spacer width="20" />
-            <p:linkButton value="GO BACK" outcome="admin" />
+            <p:linkButton value="GO BACK" outcome="admin-index" />
         </p:outputPanel>
     </h:form>
 
